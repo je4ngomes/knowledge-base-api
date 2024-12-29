@@ -6,8 +6,7 @@ This documentation covers the implementation of a Knowledge Base API built using
 
 ## Overview
 
-![image](https://github.com/user-attachments/assets/d2e05b0a-43a9-49bd-817a-fff577439a3b)
-
+![image](https://github.com/user-attachments/assets/fce90914-78a3-4f11-b3b5-fea51e3bb0bb)
 
 ### Components:
 - **MinIO S3**: Used for storing folders and files.
