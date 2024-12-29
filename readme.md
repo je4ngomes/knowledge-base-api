@@ -6,6 +6,8 @@ This documentation covers the implementation of a Knowledge Base API built using
 
 ## Overview
 
+![n8n_workflow](https://github.com/user-attachments/assets/02a37460-a728-41dd-8ddd-bf253339c47a)
+
 ### Components:
 - **MinIO S3**: Used for storing folders and files.
 - **PostgreSQL**: Database for metadata storage and query operations.
