@@ -1,0 +1,2078 @@
+{
+  "meta": {
+    "instanceId": "be53dd30ed2f11cc4f0a958c7947d4bae64cffd7d86f320fb6894f3461ef264f"
+  },
+  "nodes": [
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "681e6182-946a-4e8e-a4b5-0fc0213d1827",
+              "leftValue": "={{ $json.success }}",
+              "rightValue": "",
+              "operator": {
+                "type": "boolean",
+                "operation": "true",
+                "singleValue": true
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "id": "716a0529-9257-4b7f-8164-0becedca7a44",
+      "name": "If",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [
+        1140,
+        80
+      ]
+    },
+    {
+      "parameters": {
+        "respondWith": "noData",
+        "options": {
+          "responseCode": 400
+        }
+      },
+      "id": "0eed35f5-29b1-475a-b254-fdbd5d8f8e35",
+      "name": "Respond to Webhook",
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1.1,
+      "position": [
+        1360,
+        240
+      ]
+    },
+    {
+      "parameters": {
+        "content": "## Create knowledge base",
+        "height": 514.5258758880575,
+        "width": 1720.5200309973125,
+        "color": 7
+      },
+      "id": "61be17cb-ea8c-49a6-acfa-7a25cebe7f9f",
+      "name": "Sticky Note",
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        380,
+        -40
+      ]
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "681e6182-946a-4e8e-a4b5-0fc0213d1827",
+              "leftValue": "={{ !!$json.deleted.Key }}",
+              "rightValue": "",
+              "operator": {
+                "type": "boolean",
+                "operation": "true",
+                "singleValue": true
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "id": "6e187246-eaaf-4d33-a289-53a588a3612e",
+      "name": "If1",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [
+        1420,
+        680
+      ]
+    },
+    {
+      "parameters": {
+        "content": "## Delete knowledge base",
+        "height": 558.2174450996142,
+        "width": 1723.0166920951149,
+        "color": 7
+      },
+      "id": "0459eb17-a0bb-48d3-a4b1-7c6932e69a44",
+      "name": "Sticky Note1",
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        380,
+        500
+      ]
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "9cb6ad21-0c54-42bc-b306-bc652e7f22da",
+              "leftValue": "={{ !Number.isNaN($json.query.id)}}",
+              "rightValue": "",
+              "operator": {
+                "type": "boolean",
+                "operation": "true",
+                "singleValue": true
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "id": "e02e96d5-1eb5-421d-b1e3-053a72a0c966",
+      "name": "requiredFields1",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [
+        640,
+        680
+      ]
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "15857cd7-ee37-4e92-a19a-0bc5e6442396",
+              "leftValue": "={{ !!$json.body.name }}",
+              "rightValue": "",
+              "operator": {
+                "type": "boolean",
+                "operation": "true",
+                "singleValue": true
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "id": "b66de649-8995-434a-8511-b749506fc7a9",
+      "name": "requiredFields",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [
+        680,
+        140
+      ]
+    },
+    {
+      "parameters": {
+        "content": "## List knowledge base",
+        "height": 558.2174450996142,
+        "width": 1723.0166920951149,
+        "color": 7
+      },
+      "id": "2f673b29-db90-44ba-93c9-f6aa1079ad1b",
+      "name": "Sticky Note2",
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        380,
+        1080
+      ]
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "aa81d1d8-f63b-4d14-bff0-ea4272fa0a8a",
+              "name": "limit",
+              "value": "={{ $json.body.limit || 10 }}",
+              "type": "number"
+            },
+            {
+              "id": "b15c1aa2-c950-4a00-ba1b-730b474af384",
+              "name": "offset",
+              "value": "={{ $json.body.offset || 0 }}",
+              "type": "number"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "57599518-a8e9-4fa3-a827-ffd94b2422c9",
+      "name": "Pagination",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        1000,
+        1280
+      ]
+    },
+    {
+      "parameters": {
+        "aggregate": "aggregateAllItemData",
+        "options": {
+          "includeBinaries": true
+        }
+      },
+      "id": "93f880e9-707b-408f-ac7c-cbff88499bed",
+      "name": "Aggregate",
+      "type": "n8n-nodes-base.aggregate",
+      "typeVersion": 1,
+      "position": [
+        3060,
+        200
+      ]
+    },
+    {
+      "parameters": {
+        "content": "## Upload document",
+        "height": 514.5258758880575,
+        "width": 2165.6293250702875,
+        "color": 6
+      },
+      "id": "f346453f-ca57-4778-a2da-f536599a2935",
+      "name": "Sticky Note3",
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        2120,
+        -40
+      ]
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "581a8010-6d05-46d0-af33-03e8f9e8a6ae",
+              "leftValue": "={{ !!$json.body.knowledgeBaseId }}",
+              "rightValue": "",
+              "operator": {
+                "type": "boolean",
+                "operation": "true",
+                "singleValue": true
+              }
+            },
+            {
+              "id": "9aaf225d-7a8c-4b54-a13a-0730b40ad120",
+              "leftValue": "={{['text/html', 'text/plain', 'application/pdf', 'text/csv', 'image/jpeg', 'image/png', 'audio/mpeg', 'audio/ogg', 'audio/wav']}}",
+              "rightValue": "={{$binary.data.mimeType}}",
+              "operator": {
+                "type": "array",
+                "operation": "contains",
+                "rightType": "any"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "id": "22a350fd-85ae-4875-af24-1c4fd0c6428f",
+      "name": "If2",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [
+        2380,
+        140
+      ]
+    },
+    {
+      "parameters": {
+        "respondWith": "json",
+        "responseBody": "{\n  \"message\": \"missing required fields\"\n}",
+        "options": {
+          "responseCode": 400
+        }
+      },
+      "id": "c0edf197-715b-4ded-ab4d-b07d71e037da",
+      "name": "Respond to Webhook6",
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1.1,
+      "position": [
+        2600,
+        280
+      ]
+    },
+    {
+      "parameters": {
+        "content": "## Embedding media chunks",
+        "height": 554.6604121275528,
+        "width": 2166.1311627429013,
+        "color": 6
+      },
+      "id": "e0e68ab0-9f19-4b34-ba7c-052799f9fcd5",
+      "name": "Sticky Note4",
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        2120,
+        500
+      ]
+    },
+    {
+      "parameters": {
+        "httpMethod": "DELETE",
+        "path": "delete-knowledge-base",
+        "responseMode": "responseNode",
+        "options": {}
+      },
+      "id": "d2ec629c-1cde-4c11-9a96-54eb09053c1a",
+      "name": "DeleteKnowledgeBase",
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2,
+      "position": [
+        420,
+        680
+      ],
+      "webhookId": "3b037505-da8e-46ce-a9df-848fd7ec1a71"
+    },
+    {
+      "parameters": {
+        "path": "list-knowledge-base",
+        "responseMode": "responseNode",
+        "options": {}
+      },
+      "id": "d2174ea4-baef-43ca-8c3f-6035bfa4c4b3",
+      "name": "ListKnowledgeBase",
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2,
+      "position": [
+        760,
+        1280
+      ],
+      "webhookId": "3b037505-da8e-46ce-a9df-848fd7ec1a71"
+    },
+    {
+      "parameters": {
+        "model": "text-embedding-3-large",
+        "options": {}
+      },
+      "id": "f9d8f61d-8907-4eb5-9ba2-f966c409fe95",
+      "name": "Embeddings OpenAI",
+      "type": "@n8n/n8n-nodes-langchain.embeddingsOpenAi",
+      "typeVersion": 1,
+      "position": [
+        3420,
+        760
+      ],
+      "credentials": {
+        "openAiApi": {
+          "id": "bhkeKMOfuedekvCW",
+          "name": "OpenAi account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "dataType": "binary",
+        "options": {
+          "metadata": {
+            "metadataValues": [
+              {
+                "name": "document_id",
+                "value": "={{ $('EmbeddingDocument').item.json.body.documentId }}"
+              },
+              {
+                "name": "fileName",
+                "value": "={{$binary.data.fileName}}"
+              },
+              {
+                "name": "knowledgeBaseId",
+                "value": "={{ $('EmbeddingDocument').item.json.body.knowledgeBaseId }}"
+              }
+            ]
+          }
+        }
+      },
+      "id": "d856a5d5-4f31-4923-abb3-f966dd3fda05",
+      "name": "Default Data Loader",
+      "type": "@n8n/n8n-nodes-langchain.documentDefaultDataLoader",
+      "typeVersion": 1,
+      "position": [
+        3540,
+        760
+      ]
+    },
+    {
+      "parameters": {
+        "chunkSize": "={{ $('EmbeddingDocument').item.json.body.chunkSize || 1000 }}",
+        "chunkOverlap": "={{ $('EmbeddingDocument').item.json.body.overlap || 0 }}",
+        "options": {}
+      },
+      "id": "6ab9e7e9-db6b-4d92-a8a2-13522c8f7041",
+      "name": "Recursive Character Text Splitter",
+      "type": "@n8n/n8n-nodes-langchain.textSplitterRecursiveCharacterTextSplitter",
+      "typeVersion": 1,
+      "position": [
+        3600,
+        900
+      ]
+    },
+    {
+      "parameters": {
+        "content": "## Retrieve chunks",
+        "height": 555.7604980997104,
+        "width": 2160.1161722824513,
+        "color": 6
+      },
+      "id": "03b31165-c52c-4637-bb78-82c03b1f89a4",
+      "name": "Sticky Note5",
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        2120,
+        1080
+      ]
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "id": "dc46fba4-a743-4571-a1c2-c29877891376",
+      "name": "Embeddings OpenAI1",
+      "type": "@n8n/n8n-nodes-langchain.embeddingsOpenAi",
+      "typeVersion": 1,
+      "position": [
+        3020,
+        1440
+      ],
+      "credentials": {
+        "openAiApi": {
+          "id": "bhkeKMOfuedekvCW",
+          "name": "OpenAi account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "toText",
+        "sourceProperty": "text",
+        "options": {}
+      },
+      "id": "757a9101-b52b-4c79-931c-72add69c5b19",
+      "name": "Convert to File",
+      "type": "n8n-nodes-base.convertToFile",
+      "typeVersion": 1.1,
+      "position": [
+        3100,
+        680
+      ]
+    },
+    {
+      "parameters": {
+        "operation": "toText",
+        "sourceProperty": "content",
+        "options": {}
+      },
+      "id": "afc854c1-0a67-4872-8039-bb5b640ab1f7",
+      "name": "Convert to File1",
+      "type": "n8n-nodes-base.convertToFile",
+      "typeVersion": 1.1,
+      "position": [
+        3100,
+        840
+      ]
+    },
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "embedding-document",
+        "options": {}
+      },
+      "id": "85538f85-5737-450a-9514-e344b9edba0b",
+      "name": "EmbeddingDocument",
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2,
+      "position": [
+        2320,
+        620
+      ],
+      "webhookId": "eb1da4fa-5296-4f1b-932e-564ca63313ee"
+    },
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "knowledge-base/upload-document",
+        "responseMode": "responseNode",
+        "options": {}
+      },
+      "id": "66b31f3a-429d-48d9-8f2a-f8ba8d1a75d3",
+      "name": "UploadDocument",
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2,
+      "position": [
+        2160,
+        140
+      ],
+      "webhookId": "84b2549a-a6ed-43e0-b194-a66da10e40b6"
+    },
+    {
+      "parameters": {},
+      "id": "b2af33c6-cc35-40c1-afb8-bd5372c63a9c",
+      "name": "Merge",
+      "type": "n8n-nodes-base.merge",
+      "typeVersion": 3,
+      "position": [
+        2820,
+        200
+      ]
+    },
+    {
+      "parameters": {
+        "resource": "audio",
+        "operation": "transcribe",
+        "options": {}
+      },
+      "id": "badabb73-5cdc-4a41-a5f0-12c7397e91dd",
+      "name": "FromAudio",
+      "type": "@n8n/n8n-nodes-langchain.openAi",
+      "typeVersion": 1.6,
+      "position": [
+        2920,
+        680
+      ],
+      "credentials": {
+        "openAiApi": {
+          "id": "bhkeKMOfuedekvCW",
+          "name": "OpenAi account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "path": "retrieval",
+        "responseMode": "responseNode",
+        "options": {}
+      },
+      "id": "f79ef22d-522c-45a9-be07-fd71a0711a04",
+      "name": "RetrieveChunks",
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2,
+      "position": [
+        2780,
+        1260
+      ],
+      "webhookId": "eb1da4fa-5296-4f1b-932e-564ca63313ee"
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "http://n8n:5678/webhook/embedding-document",
+        "sendBody": true,
+        "contentType": "multipart-form-data",
+        "bodyParameters": {
+          "parameters": [
+            {
+              "name": "documentId",
+              "value": "={{ $json.id }}"
+            },
+            {
+              "name": "knowledgeBaseId",
+              "value": "={{ $json.fk_knowledgebase }}"
+            },
+            {
+              "parameterType": "formBinaryData",
+              "name": "data",
+              "inputDataFieldName": "data"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "93892d08-7b2b-4060-ba08-9eba9fcf03b8",
+      "name": "CallEmbeddingFlow",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        3880,
+        200
+      ]
+    },
+    {
+      "parameters": {
+        "operation": "upload",
+        "bucketName": "knowledgebase",
+        "fileName": "={{$binary.data.fileName }}",
+        "binaryPropertyName": "=data",
+        "additionalFields": {
+          "parentFolderKey": "={{ $json.data[0].path_name }}"
+        }
+      },
+      "id": "32c02fc7-fc21-4e81-9a02-2dec35a37dcd",
+      "name": "UploadFile",
+      "type": "n8n-nodes-base.s3",
+      "typeVersion": 1,
+      "position": [
+        3240,
+        200
+      ],
+      "credentials": {
+        "s3": {
+          "id": "Tum1tbRF5lxwQTHw",
+          "name": "S3 account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "bucketName": "knowledgebase",
+        "fileKey": "={{ $json.url }}"
+      },
+      "id": "b4c53193-f0d5-4d6f-a660-1b9cc695e042",
+      "name": "GetFile",
+      "type": "n8n-nodes-base.s3",
+      "typeVersion": 1,
+      "position": [
+        3660,
+        200
+      ],
+      "credentials": {
+        "s3": {
+          "id": "Tum1tbRF5lxwQTHw",
+          "name": "S3 account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "id": "8d6fff5b-1f37-4a0b-a9c6-7449ca0b78ad",
+      "name": "Response",
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1.1,
+      "position": [
+        1580,
+        60
+      ]
+    },
+    {
+      "parameters": {
+        "respondWith": "json",
+        "responseBody": "{\n  \"message\": \"missing required fields\"\n}",
+        "options": {
+          "responseCode": 400
+        }
+      },
+      "id": "c277c13f-2a89-4165-b845-e697e73a5d0d",
+      "name": "Response1",
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1.1,
+      "position": [
+        940,
+        260
+      ]
+    },
+    {
+      "parameters": {
+        "operation": "select",
+        "schema": {
+          "__rl": true,
+          "value": "public",
+          "mode": "list",
+          "cachedResultName": "public"
+        },
+        "table": {
+          "__rl": true,
+          "value": "knowledgebase",
+          "mode": "list",
+          "cachedResultName": "knowledgebase"
+        },
+        "limit": 1,
+        "where": {
+          "values": [
+            {
+              "column": "id",
+              "value": "={{ $json.query.id }}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "b898b357-2227-49ab-a73c-23cf7054f155",
+      "name": "GetKnowledgeBase",
+      "type": "n8n-nodes-base.postgres",
+      "typeVersion": 2.5,
+      "position": [
+        900,
+        680
+      ],
+      "credentials": {
+        "postgres": {
+          "id": "AmZaAeLUHhv9BvZ0",
+          "name": "Postgres account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "schema": {
+          "__rl": true,
+          "value": "public",
+          "mode": "list",
+          "cachedResultName": "public"
+        },
+        "table": {
+          "__rl": true,
+          "value": "knowledgebase",
+          "mode": "list",
+          "cachedResultName": "knowledgebase"
+        },
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "path_name": "={{ $('CreateKnowledgeBase').item.json.body.name }}"
+          },
+          "matchingColumns": [
+            "id"
+          ],
+          "schema": [
+            {
+              "id": "id",
+              "displayName": "id",
+              "required": false,
+              "defaultMatch": true,
+              "display": true,
+              "type": "number",
+              "canBeUsedToMatch": true,
+              "removed": true
+            },
+            {
+              "id": "path_name",
+              "displayName": "path_name",
+              "required": true,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "description",
+              "displayName": "description",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "created_at",
+              "displayName": "created_at",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "dateTime",
+              "canBeUsedToMatch": true
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "bf084c17-1d1d-4964-888e-4f00bb24342a",
+      "name": "SaveKnowledgeBase",
+      "type": "n8n-nodes-base.postgres",
+      "typeVersion": 2.5,
+      "position": [
+        1360,
+        60
+      ],
+      "credentials": {
+        "postgres": {
+          "id": "AmZaAeLUHhv9BvZ0",
+          "name": "Postgres account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "respondWith": "json",
+        "responseBody": "{\n  \"message\": \"invalid id field\"\n}",
+        "options": {
+          "responseCode": 400
+        }
+      },
+      "id": "3aa97b5f-ec18-4e0c-a1f3-88eb1a151980",
+      "name": "Response2",
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1.1,
+      "position": [
+        880,
+        880
+      ]
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "id": "d49bd0ca-7991-4e12-8eeb-713e3845d725",
+      "name": "Response3",
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1.1,
+      "position": [
+        1880,
+        600
+      ]
+    },
+    {
+      "parameters": {
+        "respondWith": "noData",
+        "options": {
+          "responseCode": 400
+        }
+      },
+      "id": "f61c23d6-4483-4a8d-afd1-9dbbfc1e6686",
+      "name": "Response4",
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1.1,
+      "position": [
+        1660,
+        800
+      ]
+    },
+    {
+      "parameters": {
+        "respondWith": "allIncomingItems",
+        "options": {}
+      },
+      "id": "8a96563c-7a5d-4015-a12e-72cf5f8e3953",
+      "name": "Response5",
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1.1,
+      "position": [
+        1520,
+        1280
+      ]
+    },
+    {
+      "parameters": {
+        "respondWith": "json",
+        "responseBody": "{\n  \"success\": true\n}",
+        "options": {}
+      },
+      "id": "398ec7dd-9bd6-4bf7-a598-6bf2ed08dcb8",
+      "name": "Response6",
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1.1,
+      "position": [
+        4100,
+        200
+      ]
+    },
+    {
+      "parameters": {
+        "operation": "update",
+        "schema": {
+          "__rl": true,
+          "value": "public",
+          "mode": "list",
+          "cachedResultName": "public"
+        },
+        "table": {
+          "__rl": true,
+          "value": "document",
+          "mode": "list",
+          "cachedResultName": "document"
+        },
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "id": "={{ $('EmbeddingDocument').item.json.body.documentId }}",
+            "status": "completed"
+          },
+          "matchingColumns": [
+            "id"
+          ],
+          "schema": [
+            {
+              "id": "id",
+              "displayName": "id",
+              "required": false,
+              "defaultMatch": true,
+              "display": true,
+              "type": "number",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "fk_knowledgebase",
+              "displayName": "fk_knowledgebase",
+              "required": true,
+              "defaultMatch": false,
+              "display": true,
+              "type": "number",
+              "canBeUsedToMatch": true,
+              "removed": true
+            },
+            {
+              "id": "name",
+              "displayName": "name",
+              "required": true,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": true
+            },
+            {
+              "id": "url",
+              "displayName": "url",
+              "required": true,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": true
+            },
+            {
+              "id": "status",
+              "displayName": "status",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "options",
+              "canBeUsedToMatch": true,
+              "options": [
+                {
+                  "name": "failed",
+                  "value": "failed"
+                },
+                {
+                  "name": "completed",
+                  "value": "completed"
+                },
+                {
+                  "name": "processing",
+                  "value": "processing"
+                },
+                {
+                  "name": "pending",
+                  "value": "pending"
+                }
+              ]
+            },
+            {
+              "id": "created_at",
+              "displayName": "created_at",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "dateTime",
+              "canBeUsedToMatch": true,
+              "removed": true
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "90e22df5-7b83-4205-bff6-d23e9b175501",
+      "name": "UpdateStatus",
+      "type": "n8n-nodes-base.postgres",
+      "typeVersion": 2.5,
+      "position": [
+        3820,
+        600
+      ],
+      "credentials": {
+        "postgres": {
+          "id": "AmZaAeLUHhv9BvZ0",
+          "name": "Postgres account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "update",
+        "schema": {
+          "__rl": true,
+          "value": "public",
+          "mode": "list",
+          "cachedResultName": "public"
+        },
+        "table": {
+          "__rl": true,
+          "value": "document",
+          "mode": "list",
+          "cachedResultName": "document"
+        },
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "id": "={{ $json.body.documentId }}",
+            "status": "processing"
+          },
+          "matchingColumns": [
+            "id"
+          ],
+          "schema": [
+            {
+              "id": "id",
+              "displayName": "id",
+              "required": false,
+              "defaultMatch": true,
+              "display": true,
+              "type": "number",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "fk_knowledgebase",
+              "displayName": "fk_knowledgebase",
+              "required": true,
+              "defaultMatch": false,
+              "display": true,
+              "type": "number",
+              "canBeUsedToMatch": true,
+              "removed": true
+            },
+            {
+              "id": "name",
+              "displayName": "name",
+              "required": true,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": true
+            },
+            {
+              "id": "url",
+              "displayName": "url",
+              "required": true,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": true
+            },
+            {
+              "id": "status",
+              "displayName": "status",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "options",
+              "canBeUsedToMatch": true,
+              "options": [
+                {
+                  "name": "failed",
+                  "value": "failed"
+                },
+                {
+                  "name": "completed",
+                  "value": "completed"
+                },
+                {
+                  "name": "processing",
+                  "value": "processing"
+                },
+                {
+                  "name": "pending",
+                  "value": "pending"
+                }
+              ]
+            },
+            {
+              "id": "created_at",
+              "displayName": "created_at",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "dateTime",
+              "canBeUsedToMatch": true,
+              "removed": true
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "6d66f125-5494-4874-a789-d1c0e1efb3c5",
+      "name": "UpdateStatus1",
+      "type": "n8n-nodes-base.postgres",
+      "typeVersion": 2.5,
+      "position": [
+        2520,
+        820
+      ],
+      "credentials": {
+        "postgres": {
+          "id": "AmZaAeLUHhv9BvZ0",
+          "name": "Postgres account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "schema": {
+          "__rl": true,
+          "value": "public",
+          "mode": "list",
+          "cachedResultName": "public"
+        },
+        "table": {
+          "__rl": true,
+          "value": "document",
+          "mode": "list",
+          "cachedResultName": "document"
+        },
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "fk_knowledgebase": "={{ $('UploadDocument').item.json.body.knowledgeBaseId }}",
+            "name": "={{ $('UploadDocument').item.binary.data.fileName }}",
+            "url": "=/{{ $('Aggregate').item.json.data[0].path_name }}/{{ $('UploadDocument').item.binary.data.fileName }}",
+            "status": "pending"
+          },
+          "matchingColumns": [
+            "id"
+          ],
+          "schema": [
+            {
+              "id": "id",
+              "displayName": "id",
+              "required": false,
+              "defaultMatch": true,
+              "display": true,
+              "type": "number",
+              "canBeUsedToMatch": true,
+              "removed": true
+            },
+            {
+              "id": "fk_knowledgebase",
+              "displayName": "fk_knowledgebase",
+              "required": true,
+              "defaultMatch": false,
+              "display": true,
+              "type": "number",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "name",
+              "displayName": "name",
+              "required": true,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "url",
+              "displayName": "url",
+              "required": true,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "status",
+              "displayName": "status",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "options",
+              "canBeUsedToMatch": true,
+              "options": [
+                {
+                  "name": "failed",
+                  "value": "failed"
+                },
+                {
+                  "name": "completed",
+                  "value": "completed"
+                },
+                {
+                  "name": "processing",
+                  "value": "processing"
+                },
+                {
+                  "name": "pending",
+                  "value": "pending"
+                }
+              ],
+              "removed": false
+            },
+            {
+              "id": "created_at",
+              "displayName": "created_at",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "dateTime",
+              "canBeUsedToMatch": true
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "1fd07b72-eb89-4729-81dc-4ab4220ae359",
+      "name": "SaveDocument",
+      "type": "n8n-nodes-base.postgres",
+      "typeVersion": 2.5,
+      "position": [
+        3440,
+        200
+      ],
+      "credentials": {
+        "postgres": {
+          "id": "AmZaAeLUHhv9BvZ0",
+          "name": "Postgres account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "select",
+        "schema": {
+          "__rl": true,
+          "value": "public",
+          "mode": "list",
+          "cachedResultName": "public"
+        },
+        "table": {
+          "__rl": true,
+          "value": "knowledgebase",
+          "mode": "list",
+          "cachedResultName": "knowledgebase"
+        },
+        "where": {
+          "values": [
+            {
+              "column": "id",
+              "value": "={{ $json.body.knowledgeBaseId }}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "05a0ccb6-1fe5-4e26-834f-6b32aef0ce0e",
+      "name": "GetKnowledgeBase1",
+      "type": "n8n-nodes-base.postgres",
+      "typeVersion": 2.5,
+      "position": [
+        2600,
+        60
+      ],
+      "alwaysOutputData": true,
+      "credentials": {
+        "postgres": {
+          "id": "AmZaAeLUHhv9BvZ0",
+          "name": "Postgres account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "executeQuery",
+        "query": "SELECT *\nFROM knowledgebase\nORDER BY created_at DESC\nLIMIT {{$json.limit}}\nOFFSET {{$json.offset}}",
+        "options": {}
+      },
+      "id": "1c3c65d9-3bbb-4598-af29-d23f2e3cb759",
+      "name": "GetListKnowledgeBase",
+      "type": "n8n-nodes-base.postgres",
+      "typeVersion": 2.5,
+      "position": [
+        1260,
+        1280
+      ],
+      "credentials": {
+        "postgres": {
+          "id": "AmZaAeLUHhv9BvZ0",
+          "name": "Postgres account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "deleteTable",
+        "schema": {
+          "__rl": true,
+          "value": "public",
+          "mode": "list",
+          "cachedResultName": "public"
+        },
+        "table": {
+          "__rl": true,
+          "value": "knowledgebase",
+          "mode": "list",
+          "cachedResultName": "knowledgebase"
+        },
+        "deleteCommand": "delete",
+        "where": {
+          "values": [
+            {
+              "column": "id",
+              "value": "={{ $('GetKnowledgeBase').item.json.id }}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "27f44186-f14a-41dc-8ea2-84cf50d5af18",
+      "name": "DeleteKnowledgeBase2",
+      "type": "n8n-nodes-base.postgres",
+      "typeVersion": 2.5,
+      "position": [
+        1660,
+        600
+      ],
+      "credentials": {
+        "postgres": {
+          "id": "AmZaAeLUHhv9BvZ0",
+          "name": "Postgres account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "resource": "folder",
+        "bucketName": "knowledgebase",
+        "folderName": "={{ $json.body.name }}",
+        "additionalFields": {}
+      },
+      "id": "4d38e3bb-50a6-41f9-9f3f-ac9be728f332",
+      "name": "CreateKnowledgeBaseFolder",
+      "type": "n8n-nodes-base.s3",
+      "typeVersion": 1,
+      "position": [
+        940,
+        80
+      ],
+      "credentials": {
+        "s3": {
+          "id": "Tum1tbRF5lxwQTHw",
+          "name": "S3 account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "resource": "folder",
+        "operation": "delete",
+        "bucketName": "knowledgebase",
+        "folderKey": "={{ $json.path_name }}"
+      },
+      "id": "677aa807-ed45-45e5-9104-c0e803121939",
+      "name": "DeleteKnwoledgeBaseFolder",
+      "type": "n8n-nodes-base.s3",
+      "typeVersion": 1,
+      "position": [
+        1180,
+        680
+      ],
+      "credentials": {
+        "s3": {
+          "id": "Tum1tbRF5lxwQTHw",
+          "name": "S3 account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "respondWith": "allIncomingItems",
+        "options": {}
+      },
+      "id": "d898e120-322c-42d1-8d61-3216be7aa98a",
+      "name": "Response7",
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1.1,
+      "position": [
+        3440,
+        1260
+      ]
+    },
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "create-knowledge-base",
+        "responseMode": "responseNode",
+        "options": {}
+      },
+      "id": "126c5a19-d00c-4c36-8a8e-12523b1a7e05",
+      "name": "CreateKnowledgeBase",
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2,
+      "position": [
+        460,
+        140
+      ],
+      "webhookId": "3b037505-da8e-46ce-a9df-848fd7ec1a71"
+    },
+    {
+      "parameters": {
+        "resource": "image",
+        "operation": "analyze",
+        "modelId": {
+          "__rl": true,
+          "value": "gpt-4o-mini",
+          "mode": "list",
+          "cachedResultName": "GPT-4O-MINI"
+        },
+        "text": "Provide a detailed description of the image, including key elements such as the setting, objects, people, colors, lighting, mood, and any notable features. Focus on aspects that define the scene, such as activities, relationships between elements, or the overall composition.",
+        "inputType": "base64",
+        "options": {}
+      },
+      "id": "134d2bf9-de82-438c-b76c-378a38a2ed61",
+      "name": "FromImage",
+      "type": "@n8n/n8n-nodes-langchain.openAi",
+      "typeVersion": 1.6,
+      "position": [
+        2920,
+        840
+      ],
+      "credentials": {
+        "openAiApi": {
+          "id": "bhkeKMOfuedekvCW",
+          "name": "OpenAi account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "rules": {
+          "values": [
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 2
+                },
+                "conditions": [
+                  {
+                    "leftValue": "={{ ['text/html', 'text/plain', 'application/pdf', 'text/csv']}}",
+                    "rightValue": "={{ $binary.data.mimeType }}",
+                    "operator": {
+                      "type": "array",
+                      "operation": "contains",
+                      "rightType": "any"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "document"
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 2
+                },
+                "conditions": [
+                  {
+                    "id": "1fe1b054-e355-42c1-a0b7-f8bd070003f1",
+                    "leftValue": "={{ ['audio/mpeg', 'audio/ogg', 'audio/wav'] }}",
+                    "rightValue": "={{ $binary.data.mimeType }}",
+                    "operator": {
+                      "type": "array",
+                      "operation": "contains",
+                      "rightType": "any"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "audio"
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 2
+                },
+                "conditions": [
+                  {
+                    "id": "48ad5853-24f2-4ade-b978-15996a3ce410",
+                    "leftValue": "={{ ['image/jpeg', 'image/png'] }}",
+                    "rightValue": "={{$binary.data.mimeType}}",
+                    "operator": {
+                      "type": "array",
+                      "operation": "contains",
+                      "rightType": "any"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "image"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "3e26cfe1-09d5-4202-a02c-5191d1e14274",
+      "name": "Switch",
+      "type": "n8n-nodes-base.switch",
+      "typeVersion": 3.2,
+      "position": [
+        2600,
+        620
+      ]
+    },
+    {
+      "parameters": {
+        "mode": "insert",
+        "tableName": "=embeddings",
+        "options": {
+          "columnNames": {
+            "values": {
+              "contentColumnName": "content"
+            }
+          }
+        }
+      },
+      "id": "e4641cc6-c329-4140-a413-5acadb2def4f",
+      "name": "InsertDocs",
+      "type": "@n8n/n8n-nodes-langchain.vectorStorePGVector",
+      "typeVersion": 1,
+      "position": [
+        3460,
+        600
+      ],
+      "credentials": {
+        "postgres": {
+          "id": "AmZaAeLUHhv9BvZ0",
+          "name": "Postgres account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "mode": "load",
+        "tableName": "=embeddings",
+        "prompt": "={{ $json.query.query }}",
+        "topK": "={{ $json.query.limit || 5 }}",
+        "options": {
+          "distanceStrategy": "cosine",
+          "columnNames": {
+            "values": {
+              "contentColumnName": "content"
+            }
+          },
+          "metadata": {
+            "metadataValues": [
+              {
+                "name": "knowledgeBaseId",
+                "value": "={{ $json.query.knowledgeBaseId }}"
+              }
+            ]
+          }
+        }
+      },
+      "id": "efc27f9f-28e0-4000-84d1-54d7291bdb94",
+      "name": "RetrieveDocs",
+      "type": "@n8n/n8n-nodes-langchain.vectorStorePGVector",
+      "typeVersion": 1,
+      "position": [
+        3040,
+        1260
+      ],
+      "alwaysOutputData": true,
+      "credentials": {
+        "postgres": {
+          "id": "AmZaAeLUHhv9BvZ0",
+          "name": "Postgres account"
+        }
+      }
+    }
+  ],
+  "connections": {
+    "If": {
+      "main": [
+        [
+          {
+            "node": "SaveKnowledgeBase",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Respond to Webhook",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "If1": {
+      "main": [
+        [
+          {
+            "node": "DeleteKnowledgeBase2",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Response4",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "requiredFields1": {
+      "main": [
+        [
+          {
+            "node": "GetKnowledgeBase",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Response2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "requiredFields": {
+      "main": [
+        [
+          {
+            "node": "CreateKnowledgeBaseFolder",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Response1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Pagination": {
+      "main": [
+        [
+          {
+            "node": "GetListKnowledgeBase",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Aggregate": {
+      "main": [
+        [
+          {
+            "node": "UploadFile",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "If2": {
+      "main": [
+        [
+          {
+            "node": "GetKnowledgeBase1",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Merge",
+            "type": "main",
+            "index": 1
+          }
+        ],
+        [
+          {
+            "node": "Respond to Webhook6",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "DeleteKnowledgeBase": {
+      "main": [
+        [
+          {
+            "node": "requiredFields1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "ListKnowledgeBase": {
+      "main": [
+        [
+          {
+            "node": "Pagination",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Embeddings OpenAI": {
+      "ai_embedding": [
+        [
+          {
+            "node": "InsertDocs",
+            "type": "ai_embedding",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Default Data Loader": {
+      "ai_document": [
+        [
+          {
+            "node": "InsertDocs",
+            "type": "ai_document",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Recursive Character Text Splitter": {
+      "ai_textSplitter": [
+        [
+          {
+            "node": "Default Data Loader",
+            "type": "ai_textSplitter",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Embeddings OpenAI1": {
+      "ai_embedding": [
+        [
+          {
+            "node": "RetrieveDocs",
+            "type": "ai_embedding",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Convert to File": {
+      "main": [
+        [
+          {
+            "node": "InsertDocs",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Convert to File1": {
+      "main": [
+        [
+          {
+            "node": "InsertDocs",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "EmbeddingDocument": {
+      "main": [
+        [
+          {
+            "node": "UpdateStatus1",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Switch",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "UploadDocument": {
+      "main": [
+        [
+          {
+            "node": "If2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Merge": {
+      "main": [
+        [
+          {
+            "node": "Aggregate",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "FromAudio": {
+      "main": [
+        [
+          {
+            "node": "Convert to File",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "RetrieveChunks": {
+      "main": [
+        [
+          {
+            "node": "RetrieveDocs",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "CallEmbeddingFlow": {
+      "main": [
+        [
+          {
+            "node": "Response6",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "UploadFile": {
+      "main": [
+        [
+          {
+            "node": "SaveDocument",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "GetFile": {
+      "main": [
+        [
+          {
+            "node": "CallEmbeddingFlow",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "GetKnowledgeBase": {
+      "main": [
+        [
+          {
+            "node": "DeleteKnwoledgeBaseFolder",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "SaveKnowledgeBase": {
+      "main": [
+        [
+          {
+            "node": "Response",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "SaveDocument": {
+      "main": [
+        [
+          {
+            "node": "GetFile",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "GetKnowledgeBase1": {
+      "main": [
+        [
+          {
+            "node": "Merge",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "GetListKnowledgeBase": {
+      "main": [
+        [
+          {
+            "node": "Response5",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "DeleteKnowledgeBase2": {
+      "main": [
+        [
+          {
+            "node": "Response3",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "CreateKnowledgeBaseFolder": {
+      "main": [
+        [
+          {
+            "node": "If",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "DeleteKnwoledgeBaseFolder": {
+      "main": [
+        [
+          {
+            "node": "If1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "CreateKnowledgeBase": {
+      "main": [
+        [
+          {
+            "node": "requiredFields",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "FromImage": {
+      "main": [
+        [
+          {
+            "node": "Convert to File1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Switch": {
+      "main": [
+        [
+          {
+            "node": "InsertDocs",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "FromAudio",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "FromImage",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "InsertDocs": {
+      "main": [
+        [
+          {
+            "node": "UpdateStatus",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "RetrieveDocs": {
+      "main": [
+        [
+          {
+            "node": "Response7",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "pinData": {}
+}

@@ -1,0 +1,62 @@
+services:
+  n8n:
+    image: n8nio/n8n:latest
+    container_name: n8n
+    restart: always
+    ports:
+      - 5678:5678
+    volumes:
+      - n8n_data:/home/node/.n8n
+    networks:
+      - n8n_network
+    depends_on:
+      - db
+      - minio
+  flyway:
+    image: flyway/flyway:latest
+    command: -url=jdbc:postgresql://db:5432/postgres -user=${POSTGRES_USER} -password=${POSTGRES_PASSWORD} -locations=filesystem:/flyway/migrations -mixed=true migrate
+    volumes:
+      - ./db/migrations:/flyway/migrations
+    depends_on:
+      - db
+    env_file:
+      - .env
+    networks:
+      - n8n_network
+  db:
+    build:
+      context: .
+      dockerfile: Dockerfile.pgql
+    container_name: db
+    restart: always
+    shm_size: 128mb
+    networks:
+      - n8n_network
+    ports:
+      - 5432:5432
+    command: postgres -c shared_preload_libraries=pg_stat_statements -c pg_stat_statements.track=all -c max_connections=200
+    env_file:
+      - .env
+  minio:
+    image: docker.io/bitnami/minio
+    container_name: minio
+    restart: always
+    ports:
+      - 9000:9000
+      - '9001:9001'
+    networks:
+      - n8n_network
+    volumes:
+      - 'minio_data:/data'
+    env_file:
+      - .env
+
+networks:
+  n8n_network:
+    driver: bridge
+
+volumes:
+  n8n_data:
+    driver: local
+  minio_data:
+    driver: local

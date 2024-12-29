@@ -1,0 +1,11 @@
+FROM postgres:latest
+# install git
+RUN apt-get update && apt-get install -y \
+  git \
+  gcc \
+  make \
+  postgresql-server-dev-all
+RUN apt-get install -y postgresql-server-dev-all && \
+  git clone https://github.com/pgvector/pgvector.git && \
+  cd pgvector && \
+  make && make install
